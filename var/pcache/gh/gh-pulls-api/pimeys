@@ -1,0 +1,7 @@
+;; Object gh/gh-pulls-api/pimeys
+;; EIEIO PERSISTENT OBJECT
+(gh-pulls-cache "gh/gh-pulls-api/pimeys"
+  :file "pimeys"
+  :entries #s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8 data ())
+  :timestamp 1360675952.373141
+  )

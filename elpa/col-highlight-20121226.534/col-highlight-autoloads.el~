@@ -1,0 +1,13 @@
+;;; col-highlight-autoloads.el --- automatically extracted autoloads
+;;
+;;; Code:
+
+
+(provide 'col-highlight-autoloads)
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; no-update-autoloads: t
+;; coding: utf-8
+;; End:
+;;; col-highlight-autoloads.el ends here
