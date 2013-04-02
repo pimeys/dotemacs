@@ -91,6 +91,32 @@
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
+(defun visit-term-buffer ()
+  "Create or visit a terminal buffer."
+  (interactive)
+  (if (not (get-buffer "*shell*"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (shell))
+    (switch-to-buffer-other-window "*shell*")))
+
+(defun move-line-up ()
+  "Move up the current line."
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+
+(defun move-line-down ()
+  "Move down the current line."
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+
 ;Look&Feel
 
 (set-default-font "Inconsolata-13")
