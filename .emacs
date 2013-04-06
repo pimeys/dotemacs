@@ -91,6 +91,32 @@
                               (setq css-indent-level 2)
                               (setq css-indent-offset 2))))
 
+(defun visit-term-buffer ()
+  "Create or visit a terminal buffer."
+  (interactive)
+  (if (not (get-buffer "*shell*"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (shell))
+    (switch-to-buffer-other-window "*shell*")))
+
+(defun move-line-up ()
+  "Move up the current line."
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2)
+  (indent-according-to-mode))
+
+(defun move-line-down ()
+  "Move down the current line."
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+
 ;Look&Feel
 
 (set-default-font "Inconsolata-13")
@@ -104,7 +130,6 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (powerline-default)
-(show-paren-mode t)
 (column-number-mode t)
 (set-fringe-style -1)
 (tooltip-mode -1)
@@ -115,6 +140,11 @@
 (setq git-gutter:always-show-gutter t)
 (setq git-gutter-fr:side 'left-fringe)
 (setq global-linum-mode -1)
+(global-hl-line-mode +1)
+(electric-indent-mode +1)
+
+(setq show-paren-style 'mixed)
+(show-paren-mode +1)
 
 (projectile-global-mode)
 (setq projectile-enable-caching t)
@@ -147,6 +177,9 @@
 (define-key evil-normal-state-map (kbd "C-p") 'next-buffer)
 (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
+(define-key evil-normal-state-map (kbd "C-S-k") 'move-line-up)
+(define-key evil-normal-state-map (kbd "C-S-j") 'move-line-down)
+(define-key evil-normal-state-map (kbd "C-S-t") 'visit-term-buffer)
 
 (global-set-key [(meta x)] (lambda ()
                              (interactive)
