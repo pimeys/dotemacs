@@ -1,2 +1,7 @@
-*~
+ *~
 autosaves
+projectile.cache
+elpa/archives/melpa/archive-contents
+elpa/archives/gnu/archive-contents
+auto-save-list/*
+backups/*
